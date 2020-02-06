@@ -24,6 +24,7 @@
             Password <input id="input" type="password" name="password"/>
             Confirm Password <input id="input" type="password" name="confirmpassword"/>
             Information <textarea rows="5" cols="30" name="information"> </textarea>
+            <input id="input" type="checkbox" name="checkbox" value="Hereby, I Accept Terms & conditions.."> Hereby, I Accept Terms & conditions..
             <input id="input" type="button" name="register" value="REGISTER"/>
         </form>
         <div>
