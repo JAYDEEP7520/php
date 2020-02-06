@@ -6,11 +6,12 @@
             #input {float:right;}
             #input1 { display: block; }
         </style>
+        <script src="Process.js"> </script> 
     </head>
     <body>
         <input id="input" type="button" name="logout" value="Log Out"/>
         <input id="input" type="button" name="myprofile" value="My Profile"/>
-        <input id="input" type="button" name="managecategory" value="Manage Category"/>
+        <a href="Blog_Category.php"><input id="input" type="button" name="managecategory" value="Manage Category"/></a>
         Blog Posts <input id="input1" type="button" name="addblogpost" value="Add Blog Post"/>
     </body>
 </html>
