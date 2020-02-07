@@ -40,7 +40,7 @@
                     }
                     if ($getemail == $email && $getpassword == md5($password)) {
                         $lastloginat = date('Y-m-d H:i:s');
-                        echo $update = mysql_query("UPDATE user set Last_Login_At='$lastloginat' where Email='$email'",$conn);
+                        $update = mysql_query("UPDATE user set Last_Login_At='$lastloginat' where Email='$email'",$conn);
                         if ($update) {
                             header("location: Blog_Post.php");
                         }
