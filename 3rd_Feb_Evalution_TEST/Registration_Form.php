@@ -17,13 +17,13 @@
                     <option value="Mrs."> Mrs. </option>
                     <option value="Dr."> Dr. </option>
                 </select>
-            First Name <input id="input" type="text" name="firstname"/>
-            Last Name <input id="input" type="text" name="lastname"/>
-            Email <input id="input" type="email" name="email"/>
-            Mobile Number <input id="input" type="number" name="mobilenumber"/>
-            Password <input id="input" type="password" name="password"/>
-            Confirm Password <input id="input" type="password" name="confirmpassword"/>
-            Information <textarea rows="5" cols="30" name="information"> </textarea>
+            First Name <input id="input" type="text" name="firstname" value="<?php session_start(); if ($_SESSION['firstname'] !== NULL) {echo $_SESSION['firstname'];}?>"/>
+            Last Name <input id="input" type="text" name="lastname" value="<?php if ($_SESSION['lastname'] !== NULL) {echo $_SESSION['lastname'];}?>"/>
+            Email <input id="input" type="email" name="email" value="<?php if ($_SESSION['email'] !== NULL) {echo $_SESSION['email'];}?>"/>
+            Mobile Number <input id="input" type="number" name="mobilenumber" value="<?php if ($_SESSION['mobilenumber'] !== NULL) {echo $_SESSION['mobilenumber'];}?>"/>
+            Password <input id="input" type="password" name="password" value="<?php if ($_SESSION['password'] !== NULL) {echo $_SESSION['password'];}?>"/>
+            Confirm Password <input id="input" type="password" name="confirmpassword" value="<?php if ($_SESSION['confirmpassword'] !== NULL) {echo $_SESSION['confirmpassword'];}?>"/>
+            Information <textarea rows="5" cols="30" name="information"> <?php if ($_SESSION['information'] !== NULL) {echo $_SESSION['information'];}?> </textarea>
             <input id="input" type="checkbox" name="accept" value="Hereby, I Accept Terms & conditions.."> Hereby, I Accept Terms & conditions..
             <input id="input" type="submit" name="register" value="REGISTER"/>
         </form>
@@ -83,6 +83,15 @@
                         $md5_password = md5($password);
                         $que = mysql_query("insert into user values('NULL','$prefix','$firstname','$lastname','$mobilenumber','$email','$md5_password','$lastloginat','$information','$createdat','$updatedat')",$conn);
                         if ($que) {
+                            session_start();
+                            $_SESSION['prefix'] = $_POST['prefix'];
+                            $_SESSION['firstname'] = $_POST['firstname'];
+                            $_SESSION['lastname'] = $_POST['lastname'];
+                            $_SESSION['email'] = $_POST['email'];
+                            $_SESSION['mobilenumber'] = $_POST['mobilenumber'];
+                            $_SESSION['password'] = $_POST['password'];
+                            $_SESSION['confirmpassword'] = $_POST['confirmpassword'];
+                            $_SESSION['information'] = $_POST['information'];
                             header("location:Login_Form.php");
                         }
                     }
